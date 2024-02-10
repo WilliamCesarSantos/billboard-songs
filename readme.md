@@ -44,3 +44,7 @@ Gravadora
 PessoaRepositorio
  - CompositorRepositorio
 PessoaController
+
+// Objeto de infra
+Database
+  -- [static]mapa(representa todos os objetos gravados no banco)
