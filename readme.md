@@ -25,10 +25,11 @@ Artista(Representação de banda, ainda que de um músico só)
   -- type(String)
   -- generoMusical(String)
 Album
-  -- artista(Artista)
+  -- autor(Artista)
   -- dataLancamento(LocalDate)
   -- musicas(Musica)
   -- nome(String)
+  -- participacoes(Artita)
 Musica
   -- nome
   -- compositores(Compositor)

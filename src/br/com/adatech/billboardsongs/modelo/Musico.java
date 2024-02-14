@@ -14,6 +14,15 @@ public class Musico extends Pessoa {
         super(nome);
         this.exclusivo = exclusivo;
         this.musicas = new ArrayList();
+        this.albuns = new ArrayList();
+    }
+
+    public Boolean getExclusivo() {
+        return exclusivo;
+    }
+
+    public void setExclusivo(Boolean exclusivo) {
+        this.exclusivo = exclusivo;
     }
 
     public void adicionarMusica(Musica musica) {
@@ -22,6 +31,14 @@ public class Musico extends Pessoa {
 
     public List getMusicas() {
         return Collections.unmodifiableList(this.musicas);
+    }
+
+    public void adicionarAlgum(Album album) {
+        this.albuns.add(album);
+    }
+
+    public List getAlbuns() {
+        return Collections.unmodifiableList(this.albuns);
     }
 
 }
