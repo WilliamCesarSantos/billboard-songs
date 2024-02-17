@@ -80,4 +80,5 @@ public class Artista {
     public void setGeneroMusical(String generoMusical) {
         this.generoMusical = generoMusical;
     }
+
 }

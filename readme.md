@@ -49,3 +49,18 @@ PessoaController
 // Objeto de infra
 Database
   -- [static]mapa(representa todos os objetos gravados no banco)
+
+
+Lição de casa.
+Criar repositório para as classes de modelo que ainda não os tenha.
+Compositor.
+ - Criar filtro por nome
+Gravadora.
+ - Criar filtro por nome
+Musica
+ - Criar filtro por nome
+ - Criar filtro por compositores
+Musico
+ - Criar filtro por nome
+Album
+ - Criar filtro por data de lancamento
