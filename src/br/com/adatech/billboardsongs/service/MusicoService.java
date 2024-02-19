@@ -22,7 +22,7 @@ public class MusicoService {
         repositorio.gravar(musico);
     }
 
-    public void update(Musico musico) {
+    public void atualizar(Musico musico) {
         if (musico == null) {
             throw new ModeloInvalidoException("Musico informado não pode ser nulo");
         }

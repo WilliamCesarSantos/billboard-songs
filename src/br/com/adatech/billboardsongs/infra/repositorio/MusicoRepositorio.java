@@ -1,10 +1,12 @@
 package br.com.adatech.billboardsongs.infra.repositorio;
 
 import br.com.adatech.billboardsongs.infra.banco.BancoDeDados;
+import br.com.adatech.billboardsongs.modelo.Album;
 import br.com.adatech.billboardsongs.modelo.Musica;
 import br.com.adatech.billboardsongs.modelo.Musico;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MusicoRepositorio extends AbstractRepositorio {
 
@@ -15,6 +17,15 @@ public class MusicoRepositorio extends AbstractRepositorio {
     @Override
     protected Class classeModelo() {
         return Musico.class;
+    }
+
+    @Override
+    public void gravar(Object objeto) {
+        Album album = (Album) objeto;
+        if (album.getId() == null) {
+            album.setId(bancoDeDados.proximoId());
+        }
+        super.gravar(objeto);
     }
 
     public List musicosQueGravaramAMusica(Musica musica) {
@@ -34,4 +45,9 @@ public class MusicoRepositorio extends AbstractRepositorio {
         return musicosComONomeBuscado;
     }
 
+    @Override
+    protected Boolean filtraPorId(Object objeto, Long id) {
+        Musico musico = (Musico) objeto;
+        return Objects.equals(musico.getId(), id);
+    }
 }

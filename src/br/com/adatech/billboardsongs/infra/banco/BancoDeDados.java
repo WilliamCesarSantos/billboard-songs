@@ -5,6 +5,7 @@ import java.util.*;
 public class BancoDeDados {
 
     private static final Map OBJETOS = new HashMap();
+    private static Long id = 0l;
 
     public void inserirObjeto(Object objeto) {
         Set objetos = colecaoDeObjetos(objeto.getClass());
@@ -28,6 +29,11 @@ public class BancoDeDados {
             BancoDeDados.OBJETOS.put(clazz, objetos);
         }
         return objetos;
+    }
+
+    public Long proximoId() {
+        id = id++;
+        return id;
     }
 
 }

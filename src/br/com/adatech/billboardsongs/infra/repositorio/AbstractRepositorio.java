@@ -17,6 +17,17 @@ public abstract class AbstractRepositorio {
         this.bancoDeDados.inserirObjeto(objeto);
     }
 
+    public Object buscarPorId(Long id) {
+        List objetos = listar();
+        Object encontradoPorId = null;
+        for (Object objeto : objetos) {
+            if (filtraPorId(objeto, id)) {
+                encontradoPorId = objeto;
+            }
+        }
+        return encontradoPorId;
+    }
+
     public List listar() {
         List objetosPresentesNoBanco = this.bancoDeDados.buscarObjetosPorTipo(classeModelo());
         return Collections.unmodifiableList(objetosPresentesNoBanco);
@@ -28,5 +39,7 @@ public abstract class AbstractRepositorio {
     }
 
     protected abstract Class classeModelo();
+
+    protected abstract Boolean filtraPorId(Object objeto, Long id);
 
 }

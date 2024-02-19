@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Musica {
 
+    private Long id;
     private final String nome;
     private final List compositores;
     private final String letra;
@@ -31,5 +32,13 @@ public class Musica {
 
     public Float getDuracao() {
         return duracao;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

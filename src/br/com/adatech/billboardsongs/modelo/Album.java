@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Album {
 
+    private Long id;
     private final String nome;
     private final Artista autor;
     private final LocalDate dataLancamento;
@@ -38,5 +39,13 @@ public class Album {
 
     public List getParticipacoes() {
         return Collections.unmodifiableList(participacoes);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Artista {
 
+    private Long id;
     private String nome;
     private List musicos;
     private List albuns;
@@ -81,4 +82,11 @@ public class Artista {
         this.generoMusical = generoMusical;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

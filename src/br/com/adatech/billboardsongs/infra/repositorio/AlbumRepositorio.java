@@ -6,6 +6,7 @@ import br.com.adatech.billboardsongs.modelo.Artista;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AlbumRepositorio extends AbstractRepositorio {
 
@@ -16,6 +17,15 @@ public class AlbumRepositorio extends AbstractRepositorio {
     @Override
     protected Class classeModelo() {
         return Album.class;
+    }
+
+    @Override
+    public void gravar(Object objeto) {
+        Album album = (Album) objeto;
+        if (album.getId() == null) {
+            album.setId(bancoDeDados.proximoId());
+        }
+        super.gravar(objeto);
     }
 
     public List consultarPorNome(String nome) {
@@ -53,6 +63,12 @@ public class AlbumRepositorio extends AbstractRepositorio {
             }
         }
         return albunsFiltrado;
+    }
+
+    @Override
+    protected Boolean filtraPorId(Object objeto, Long id) {
+        Album album = (Album) objeto;
+        return Objects.equals(album.getId(), id);
     }
 
     private Boolean compararAutor(Album album, Artista autor) {
