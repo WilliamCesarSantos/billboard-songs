@@ -64,3 +64,9 @@ Musico
  - Criar filtro por nome
 Album
  - Criar filtro por data de lancamento
+
+CRUD
+C - Create(criar)
+R - Read(listar)
+U - Update(atualizar)
+D - Delete(excluir)
