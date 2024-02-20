@@ -1,7 +1,6 @@
 package br.com.adatech.billboardsongs.view.musico;
 
 import br.com.adatech.billboardsongs.service.MusicoService;
-import com.sun.java.accessibility.util.SwingEventMonitor;
 
 import java.util.Scanner;
 
@@ -33,7 +32,7 @@ public class MusicoView {
         }
         switch (option) {
             case 1 -> new CadastrarMusicoView(this.service).execute();
-//            2 -> new ListarMusicoView();
+            case 2 -> new ListarMusicoView(this.service).execute();
 //            3 -> new UpdateMusicoView();
 //            4 -> new ExcluirMusicoView();
             case 0 -> {
