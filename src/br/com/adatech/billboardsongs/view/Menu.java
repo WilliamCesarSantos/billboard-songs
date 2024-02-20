@@ -3,35 +3,30 @@ package br.com.adatech.billboardsongs.view;
 import br.com.adatech.billboardsongs.service.MusicoService;
 import br.com.adatech.billboardsongs.view.musico.MusicoView;
 
-import java.util.Scanner;
-
-public class Menu {
+public class Menu extends AbstractMenuView {
 
     private MusicoService musicoService;
 
     public Menu(MusicoService musicoService) {
+        super(new String[]{
+                "1 - Album",
+                "2 - Artista",
+                "3 - Compositor",
+                "4 - Gravadora",
+                "5 - Musica",
+                "6 - Musico",
+                "0 - Sair"
+        });
         this.musicoService = musicoService;
     }
 
-    public void execute() {
-        System.out.println("Escolha uma opção");
-        System.out.println("1 - Album");
-        System.out.println("2 - Artista");
-        System.out.println("3 - Compositor");
-        System.out.println("4 - Gravadora");
-        System.out.println("5 - Musica");
-        System.out.println("6 - Musico");
-        System.out.println("0 - Sair");
-
-        Scanner scanner = new Scanner(System.in);
-        Integer opcao = scanner.nextInt();
-        executeOptions(opcao);
+    @Override
+    protected Boolean validOption(Integer option) {
+        return option >= 0 && option <= 6;
     }
 
-    public void executeOptions(Integer option) {
-        if (option < 0 || option > 6) {
-            System.out.println("Opção invalida");
-        }
+    @Override
+    protected void executeOption(Integer option) {
         switch (option) {
             case 6 -> new MusicoView(musicoService).execute();
             case 0 -> System.exit(1);
@@ -39,4 +34,5 @@ public class Menu {
         }
         execute();
     }
+
 }

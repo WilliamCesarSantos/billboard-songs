@@ -1,35 +1,30 @@
 package br.com.adatech.billboardsongs.view.musico;
 
 import br.com.adatech.billboardsongs.service.MusicoService;
+import br.com.adatech.billboardsongs.view.AbstractMenuView;
 
-import java.util.Scanner;
-
-public class MusicoView {
+public class MusicoView extends AbstractMenuView {
 
     private MusicoService service;
 
     public MusicoView(MusicoService service) {
+        super(new String[]{
+                "1 - Cadastrar",
+                "2 - Listar",
+                "3 - Editar",
+                "4 - Excluir",
+                "0 - Voltar"
+        });
         this.service = service;
     }
 
-    public void execute() {
-        System.out.println("Escolha uma opção");
-        System.out.println("1 - Cadastrar");
-        System.out.println("2 - Listar");
-        System.out.println("3 - Editar");
-        System.out.println("4 - Excluir");
-        System.out.println("0 - Voltar");
-
-        Scanner scanner = new Scanner(System.in);
-        Integer option = scanner.nextInt();
-        executeOption(option);
+    @Override
+    protected Boolean validOption(Integer option) {
+        return option >= 0 && option <= 4;
     }
 
+    @Override
     protected void executeOption(Integer option) {
-        if (option < 0 || option > 4) {
-            System.out.println("Opcao invalida");
-            execute();
-        }
         switch (option) {
             case 1 -> new CadastrarMusicoView(this.service).execute();
             case 2 -> new ListarMusicoView(this.service).execute();

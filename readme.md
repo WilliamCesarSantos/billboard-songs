@@ -70,3 +70,5 @@ C - Create(criar)
 R - Read(listar)
 U - Update(atualizar)
 D - Delete(excluir)
+
+Criar view para consulta de músico pelo nome.
