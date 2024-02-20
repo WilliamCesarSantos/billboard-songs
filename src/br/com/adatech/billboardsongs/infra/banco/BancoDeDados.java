@@ -32,7 +32,7 @@ public class BancoDeDados {
     }
 
     public Long proximoId() {
-        id = id++;
+        id = id + 1;
         return id;
     }
 
