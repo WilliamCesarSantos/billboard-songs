@@ -21,9 +21,9 @@ public class MusicoRepositorio extends AbstractRepositorio {
 
     @Override
     public void gravar(Object objeto) {
-        Album album = (Album) objeto;
-        if (album.getId() == null) {
-            album.setId(bancoDeDados.proximoId());
+        Musico musico = (Musico) objeto;
+        if (musico.getId() == null) {
+            musico.setId(bancoDeDados.proximoId());
         }
         super.gravar(objeto);
     }

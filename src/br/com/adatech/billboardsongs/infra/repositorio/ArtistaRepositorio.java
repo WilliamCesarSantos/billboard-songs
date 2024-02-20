@@ -1,10 +1,8 @@
 package br.com.adatech.billboardsongs.infra.repositorio;
 
 import br.com.adatech.billboardsongs.infra.banco.BancoDeDados;
-import br.com.adatech.billboardsongs.modelo.Album;
 import br.com.adatech.billboardsongs.modelo.Artista;
 import br.com.adatech.billboardsongs.modelo.Musica;
-import br.com.adatech.billboardsongs.modelo.Musico;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +21,9 @@ public class ArtistaRepositorio extends AbstractRepositorio {
 
     @Override
     public void gravar(Object objeto) {
-        Album album = (Album) objeto;
-        if (album.getId() == null) {
-            album.setId(bancoDeDados.proximoId());
+        Artista artista = (Artista) objeto;
+        if (artista.getId() == null) {
+            artista.setId(bancoDeDados.proximoId());
         }
         super.gravar(objeto);
     }
