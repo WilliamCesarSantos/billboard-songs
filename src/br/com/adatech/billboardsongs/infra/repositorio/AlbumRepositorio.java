@@ -25,7 +25,7 @@ public class AlbumRepositorio extends AbstractRepositorio {
         if (album.getId() == null) {
             album.setId(bancoDeDados.proximoId());
         }
-        super.gravar(objeto);
+        //super.gravar(objeto);
     }
 
     public List consultarPorNome(String nome) {

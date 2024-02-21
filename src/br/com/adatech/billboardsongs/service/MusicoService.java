@@ -1,8 +1,10 @@
 package br.com.adatech.billboardsongs.service;
 
 import br.com.adatech.billboardsongs.infra.repositorio.MusicoRepositorio;
+import br.com.adatech.billboardsongs.infra.repositorio.exception.RepositorioException;
 import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.exception.ModeloInvalidoException;
+import br.com.adatech.billboardsongs.service.exception.ServiceException;
 
 import java.util.List;
 
@@ -14,17 +16,21 @@ public class MusicoService {
         this.repositorio = repositorio;
     }
 
-    public void criar(Musico musico) {
+    public void criar(Musico musico) throws ServiceException {
         if (musico == null) {
             throw new ModeloInvalidoException("Musico informado não pode ser nulo");
         }
         if (musico.getNome() == null || musico.getNome().trim().isEmpty()) {
             throw new ModeloInvalidoException("Nome do músico não pode ser nulo");
         }
-        repositorio.gravar(musico);
+        try {
+            repositorio.gravar(musico);
+        } catch (RepositorioException exception) {
+            throw new ServiceException(exception.getMessage(), exception);
+        }
     }
 
-    public void atualizar(Musico musico) {
+    public void atualizar(Musico musico) throws ServiceException {
         if (musico == null) {
             throw new ModeloInvalidoException("Musico informado não pode ser nulo");
         }
@@ -37,7 +43,11 @@ public class MusicoService {
             // Caso a condição seja atendida, significa que o músico não existe na base
             throw new ModeloInvalidoException("Musico não encontrado");
         }
-        repositorio.gravar(musico);
+        try {
+            repositorio.gravar(musico);
+        } catch (RepositorioException exception) {
+            throw new ServiceException(exception.getMessage(), exception);
+        }
     }
 
     public void excluir(Musico musico) {
@@ -67,6 +77,14 @@ public class MusicoService {
 
     public List listar() {
         return repositorio.listar();
+    }
+
+    public Musico pesquisarPorNome(String nome) {
+        Musico musico = null;
+        if (nome != null) {
+            musico = repositorio.buscarPorNome(nome);
+        }
+        return musico;
     }
 
 }

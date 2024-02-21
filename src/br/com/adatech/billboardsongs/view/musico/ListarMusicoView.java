@@ -2,6 +2,7 @@ package br.com.adatech.billboardsongs.view.musico;
 
 import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.MusicoService;
+import br.com.adatech.billboardsongs.view.component.TableView;
 
 import java.util.List;
 
@@ -14,17 +15,16 @@ public class ListarMusicoView {
     }
 
     public void execute() {
-        System.out.println("| Codigo  |  Nome     | Exclusivo   | ");
+        String[] headers = {"Codigo", "Nome", "Exclusivo"};
         List musicos = service.listar();
-        for (Object objeto : musicos) {
-            Musico musico = (Musico) objeto;
-            System.out.print("| ");
-            System.out.print(musico.getId());
-            System.out.print(" | ");
-            System.out.print(musico.getNome());
-            System.out.print(" | ");
-            System.out.print(musico.getExclusivo() ? "Sim" : "Não");
-            System.out.println(" |");
+        String[][] lines = new String[musicos.size()][headers.length];
+        for (int index = 0; index < musicos.size(); index++) {
+            Musico musico = (Musico) musicos.get(index);
+            lines[index][0] = musico.getId().toString();
+            lines[index][1] = musico.getNome();
+            lines[index][2] = musico.getExclusivo() ? "Sim" : "Não";
         }
+        TableView view = new TableView();
+        view.execute(headers, lines);
     }
 }

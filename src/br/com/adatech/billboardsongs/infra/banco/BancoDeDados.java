@@ -1,5 +1,7 @@
 package br.com.adatech.billboardsongs.infra.banco;
 
+import br.com.adatech.billboardsongs.infra.banco.exception.DatabaseException;
+
 import java.util.*;
 
 public class BancoDeDados {
@@ -7,7 +9,10 @@ public class BancoDeDados {
     private static final Map OBJETOS = new HashMap();
     private static Long id = 0l;
 
-    public void inserirObjeto(Object objeto) {
+    public void inserirObjeto(Object objeto) throws DatabaseException {
+        if (1 == 1) {
+            throw new DatabaseException("Falha no acesso");
+        }
         Set objetos = colecaoDeObjetos(objeto.getClass());
         objetos.add(objeto);
     }
@@ -24,7 +29,7 @@ public class BancoDeDados {
 
     private Set colecaoDeObjetos(Class clazz) {
         Set objetos = (Set) BancoDeDados.OBJETOS.get(clazz);
-        if (objetos == null){
+        if (objetos == null) {
             objetos = new HashSet();
             BancoDeDados.OBJETOS.put(clazz, objetos);
         }

@@ -25,7 +25,7 @@ public class ArtistaRepositorio extends AbstractRepositorio {
         if (artista.getId() == null) {
             artista.setId(bancoDeDados.proximoId());
         }
-        super.gravar(objeto);
+//        super.gravar(objeto);
     }
 
     public List artistaQueGravaram(Musica musica) {

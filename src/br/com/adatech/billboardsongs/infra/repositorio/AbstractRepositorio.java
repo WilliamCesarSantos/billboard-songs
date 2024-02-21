@@ -1,6 +1,8 @@
 package br.com.adatech.billboardsongs.infra.repositorio;
 
 import br.com.adatech.billboardsongs.infra.banco.BancoDeDados;
+import br.com.adatech.billboardsongs.infra.banco.exception.DatabaseException;
+import br.com.adatech.billboardsongs.infra.repositorio.exception.RepositorioException;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,8 +15,12 @@ public abstract class AbstractRepositorio {
         this.bancoDeDados = bancoDeDados;
     }
 
-    public void gravar(Object objeto) {
-        this.bancoDeDados.inserirObjeto(objeto);
+    public void gravar(Object objeto) throws RepositorioException {
+        try {
+            this.bancoDeDados.inserirObjeto(objeto);
+        } catch (DatabaseException exception) {
+            throw new RepositorioException(exception.getMessage(), exception);
+        }
     }
 
     public Object buscarPorId(Long id) {

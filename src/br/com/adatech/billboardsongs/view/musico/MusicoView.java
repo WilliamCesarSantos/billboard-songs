@@ -11,8 +11,9 @@ public class MusicoView extends AbstractMenuView {
         super(new String[]{
                 "1 - Cadastrar",
                 "2 - Listar",
-                "3 - Editar",
-                "4 - Excluir",
+                "3 - Consultar por nome",
+                "4 - Editar",
+                "5 - Excluir",
                 "0 - Voltar"
         });
         this.service = service;
@@ -28,6 +29,7 @@ public class MusicoView extends AbstractMenuView {
         switch (option) {
             case 1 -> new CadastrarMusicoView(this.service).execute();
             case 2 -> new ListarMusicoView(this.service).execute();
+            case 3 -> new BuscarMusicoPorNomeView(this.service).execute();
 //            3 -> new UpdateMusicoView();
 //            4 -> new ExcluirMusicoView();
             case 0 -> {

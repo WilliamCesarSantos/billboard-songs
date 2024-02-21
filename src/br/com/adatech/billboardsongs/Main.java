@@ -13,6 +13,13 @@ public class Main {
         MusicoService musicoService = new MusicoService(musicoRepositorio);
 
         Menu principal = new Menu(musicoService);
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread t, Throwable e) {
+                System.err.println("Exceção não tratada: " + e.getMessage());
+                main(args);
+            }
+        });
         principal.execute();
     }
 }

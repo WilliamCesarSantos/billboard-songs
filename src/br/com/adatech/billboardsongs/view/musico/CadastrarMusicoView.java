@@ -3,6 +3,7 @@ package br.com.adatech.billboardsongs.view.musico;
 import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.MusicoService;
 import br.com.adatech.billboardsongs.service.exception.ModeloInvalidoException;
+import br.com.adatech.billboardsongs.service.exception.ServiceException;
 
 import java.util.Scanner;
 
@@ -24,7 +25,10 @@ public class CadastrarMusicoView {
         try {
             service.criar(musico);
         } catch (ModeloInvalidoException exception) {
-            System.out.println(exception.getMessage());
+            System.err.println(exception.getMessage());
+            execute();
+        } catch (ServiceException e) {
+            System.err.println("Ocorreu um erro. Tenta novamente mais tarde.");
             execute();
         }
     }
