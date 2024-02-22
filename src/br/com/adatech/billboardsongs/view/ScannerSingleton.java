@@ -8,7 +8,18 @@ public class ScannerSingleton {
     private Scanner scanner = new Scanner(System.in);
     private static final ScannerSingleton SINGLETON = new ScannerSingleton();
 
-    private ScannerSingleton() {}
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                System.out.println("Fechando scanner pelo shutdown hook");
+                instance().getScanner().close();
+            }
+        });
+    }
+
+    private ScannerSingleton() {
+    }
 
     public static ScannerSingleton instance() {
         return SINGLETON;

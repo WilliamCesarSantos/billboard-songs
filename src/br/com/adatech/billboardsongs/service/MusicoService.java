@@ -1,7 +1,9 @@
 package br.com.adatech.billboardsongs.service;
 
+import br.com.adatech.billboardsongs.infra.repositorio.MusicaRepositorio;
 import br.com.adatech.billboardsongs.infra.repositorio.MusicoRepositorio;
 import br.com.adatech.billboardsongs.infra.repositorio.exception.RepositorioException;
+import br.com.adatech.billboardsongs.modelo.Musica;
 import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.exception.ModeloInvalidoException;
 import br.com.adatech.billboardsongs.service.exception.ServiceException;
@@ -11,9 +13,11 @@ import java.util.List;
 public class MusicoService {
 
     private MusicoRepositorio repositorio;
+    private MusicaRepositorio musicaRepositorio;
 
-    public MusicoService(MusicoRepositorio repositorio) {
+    public MusicoService(MusicoRepositorio repositorio, MusicaRepositorio musicaRepositorio) {
         this.repositorio = repositorio;
+        this.musicaRepositorio = musicaRepositorio;
     }
 
     public void criar(Musico musico) throws ServiceException {
