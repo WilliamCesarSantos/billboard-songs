@@ -10,9 +10,6 @@ public class BancoDeDados {
     private static Long id = 0l;
 
     public void inserirObjeto(Object objeto) throws DatabaseException {
-        if (1 == 1) {
-            throw new DatabaseException("Falha no acesso");
-        }
         Set objetos = colecaoDeObjetos(objeto.getClass());
         objetos.add(objeto);
     }

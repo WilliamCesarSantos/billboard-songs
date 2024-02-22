@@ -1,7 +1,5 @@
 package br.com.adatech.billboardsongs.view;
 
-import java.util.Scanner;
-
 public abstract class AbstractMenuView {
 
     private String[] options;
@@ -10,13 +8,13 @@ public abstract class AbstractMenuView {
         this.options = options;
     }
 
-    public void execute(){
+    public void execute() {
         System.out.println("Escolha uma opção:");
         for (String option : options) {
             System.out.println(option);
         }
-        Scanner scanner = new Scanner(System.in);
-        Integer option = scanner.nextInt();
+        String value = ScannerSingleton.instance().getScanner().nextLine();
+        Integer option = Integer.valueOf(value);
         if (validOption(option)) {
             executeOption(option);
         } else {

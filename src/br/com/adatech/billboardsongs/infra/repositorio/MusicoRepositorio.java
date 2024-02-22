@@ -24,7 +24,6 @@ public class MusicoRepositorio extends AbstractRepositorio {
         Musico musico = (Musico) objeto;
         if (musico.getId() == null) {
             musico.setId(bancoDeDados.proximoId());
-            throw new IllegalArgumentException("Falhou!!!");
         }
         super.gravar(objeto);
     }

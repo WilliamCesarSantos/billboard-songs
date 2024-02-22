@@ -2,9 +2,8 @@ package br.com.adatech.billboardsongs.view.musico;
 
 import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.MusicoService;
+import br.com.adatech.billboardsongs.view.ScannerSingleton;
 import br.com.adatech.billboardsongs.view.component.TableView;
-
-import java.util.Scanner;
 
 public class BuscarMusicoPorNomeView {
 
@@ -15,9 +14,8 @@ public class BuscarMusicoPorNomeView {
     }
 
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o nome para consulta:");
-        String nome = scanner.nextLine();
+        String nome = ScannerSingleton.instance().getScanner().nextLine();
         Musico musico = service.pesquisarPorNome(nome);
         if (musico != null) {
             String[] headers = {"Nome"};

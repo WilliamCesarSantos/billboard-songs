@@ -4,8 +4,7 @@ import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.MusicoService;
 import br.com.adatech.billboardsongs.service.exception.ModeloInvalidoException;
 import br.com.adatech.billboardsongs.service.exception.ServiceException;
-
-import java.util.Scanner;
+import br.com.adatech.billboardsongs.view.ScannerSingleton;
 
 public class CadastrarMusicoView {
 
@@ -16,11 +15,10 @@ public class CadastrarMusicoView {
     }
 
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Informe o nome: ");
-        String nome = scanner.nextLine();
+        String nome = ScannerSingleton.instance().getScanner().nextLine();
         System.out.println("Informe se o músico é exclusivo(s/n): ");
-        String exclusivo = scanner.nextLine();
+        String exclusivo = ScannerSingleton.instance().getScanner().nextLine();
         Musico musico = new Musico(nome, exclusivo.equalsIgnoreCase("s"));
         try {
             service.criar(musico);
