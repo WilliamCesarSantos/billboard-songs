@@ -3,7 +3,7 @@ package br.com.adatech.billboardsongs.view.musico;
 import br.com.adatech.billboardsongs.modelo.Musico;
 import br.com.adatech.billboardsongs.service.MusicoService;
 import br.com.adatech.billboardsongs.view.ScannerSingleton;
-import br.com.adatech.billboardsongs.view.component.TableView;
+import br.com.adatech.billboardsongs.view.component.table.TableView;
 
 public class BuscarMusicoPorNomeView {
 

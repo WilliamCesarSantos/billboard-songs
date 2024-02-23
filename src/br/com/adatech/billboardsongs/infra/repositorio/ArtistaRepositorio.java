@@ -1,6 +1,7 @@
 package br.com.adatech.billboardsongs.infra.repositorio;
 
 import br.com.adatech.billboardsongs.infra.banco.BancoDeDados;
+import br.com.adatech.billboardsongs.infra.repositorio.exception.RepositorioException;
 import br.com.adatech.billboardsongs.modelo.Artista;
 import br.com.adatech.billboardsongs.modelo.Musica;
 
@@ -20,12 +21,12 @@ public class ArtistaRepositorio extends AbstractRepositorio {
     }
 
     @Override
-    public void gravar(Object objeto) {
+    public void gravar(Object objeto) throws RepositorioException {
         Artista artista = (Artista) objeto;
         if (artista.getId() == null) {
             artista.setId(bancoDeDados.proximoId());
         }
-//        super.gravar(objeto);
+        super.gravar(objeto);
     }
 
     public List artistaQueGravaram(Musica musica) {

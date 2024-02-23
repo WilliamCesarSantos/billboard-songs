@@ -1,4 +1,4 @@
-package br.com.adatech.billboardsongs.view.component;
+package br.com.adatech.billboardsongs.view.component.table;
 
 public class TableView {
 

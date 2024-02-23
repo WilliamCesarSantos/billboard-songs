@@ -1,27 +1,25 @@
 package br.com.adatech.billboardsongs.view.musico;
 
 import br.com.adatech.billboardsongs.service.MusicoService;
-import br.com.adatech.billboardsongs.view.AbstractMenuView;
+import br.com.adatech.billboardsongs.view.component.menu.AbstractMenuView;
+import br.com.adatech.billboardsongs.view.component.menu.MenuItem;
+
+import java.util.List;
 
 public class MusicoView extends AbstractMenuView {
 
     private MusicoService service;
 
     public MusicoView(MusicoService service) {
-        super(new String[]{
-                "1 - Cadastrar",
-                "2 - Listar",
-                "3 - Consultar por nome",
-                "4 - Editar",
-                "5 - Excluir",
-                "0 - Voltar"
-        });
+        super(List.of(
+                new MenuItem(1, "Cadastrar"),
+                new MenuItem(2, "Listar"),
+                new MenuItem(3, "Consultar por nome"),
+                new MenuItem(4, "Editar"),
+                new MenuItem(5, "Excluir"),
+                new MenuItem(0, "Voltar")
+        ));
         this.service = service;
-    }
-
-    @Override
-    protected Boolean validOption(Integer option) {
-        return option >= 0 && option <= 4;
     }
 
     @Override
