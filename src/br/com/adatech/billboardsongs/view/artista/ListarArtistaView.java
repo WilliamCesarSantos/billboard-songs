@@ -37,7 +37,7 @@ public class ListarArtistaView {
         String nomes = "";
         for (Object objeto : musicos) {
             Musico musico = (Musico) objeto;
-            nomes = nomes + musico + ", ";
+            nomes = nomes + musico.getNome() + ", ";
         }
         return nomes;
     }

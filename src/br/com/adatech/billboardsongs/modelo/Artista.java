@@ -20,6 +20,7 @@ public class Artista {
         this.exclusivo = exclusivo;
         this.tipo = tipo;
         this.generoMusical = generoMusical;
+        this.ativo = true;
     }
 
     public String getNome() {

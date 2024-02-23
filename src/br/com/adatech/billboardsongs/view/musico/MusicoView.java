@@ -4,21 +4,19 @@ import br.com.adatech.billboardsongs.service.MusicoService;
 import br.com.adatech.billboardsongs.view.component.menu.AbstractMenuView;
 import br.com.adatech.billboardsongs.view.component.menu.MenuItem;
 
-import java.util.List;
-
 public class MusicoView extends AbstractMenuView {
 
     private MusicoService service;
 
     public MusicoView(MusicoService service) {
-        super(List.of(
+        super(new MenuItem[]{
                 new MenuItem(1, "Cadastrar"),
                 new MenuItem(2, "Listar"),
                 new MenuItem(3, "Consultar por nome"),
                 new MenuItem(4, "Editar"),
                 new MenuItem(5, "Excluir"),
                 new MenuItem(0, "Voltar")
-        ));
+        });
         this.service = service;
     }
 

@@ -6,18 +6,17 @@ import java.util.List;
 
 public abstract class AbstractMenuView {
 
-    private List items;
+    private MenuItem[] items;
 
-    public AbstractMenuView(List items) {
+    public AbstractMenuView(MenuItem[] items) {
         this.items = items;
     }
 
     public void execute() {
-        System.out.println("Escolha uma opção:");
-        for (Object objeto : items) {
-            MenuItem item = (MenuItem) objeto;
+        for (MenuItem item : items) {
             System.out.println(item.getCodigo() + " - " + item.getTexto());
         }
+        System.out.println("Escolha uma opção:");
         String option = ScannerSingleton.instance().getScanner().nextLine();
         executeOption(option);
     }

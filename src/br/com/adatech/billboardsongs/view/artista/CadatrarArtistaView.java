@@ -26,7 +26,7 @@ public class CadatrarArtistaView {
 
     public void execute() {
         Scanner scanner = ScannerSingleton.instance().getScanner();
-        System.out.println("Informa o mnome: ");
+        System.out.println("Informa o nome: ");
         String nome = scanner.nextLine();
         List musicos = musicos();
         System.out.println("Artista exclusivo(s/n): ");
@@ -51,9 +51,9 @@ public class CadatrarArtistaView {
         System.out.println("Informe os musicos da formação:");
         Scanner scanner = ScannerSingleton.instance().getScanner();
         String continuar = "n";
-        List items = musicoItems();
+        SelectItemView[] items = musicoItems();
         List musicos = new ArrayList();
-        SelectView view = new SelectView("Nome", items);
+        SelectView view = new SelectView("Codigo - Nome", items);
         do {
             view.execute();
             Object musico = view.selecionarItem();
@@ -64,13 +64,13 @@ public class CadatrarArtistaView {
         return musicos;
     }
 
-    private List musicoItems() {
+    private SelectItemView[] musicoItems() {
         List musicos = musicoService.listar();
-        List items = new ArrayList(musicos.size());
-        for (Object objeto : musicos) {
-            Musico musico = (Musico) objeto;
-            items.add(new SelectItemView(musico.getId().toString(), musico.getNome(), musico));
+        SelectItemView[] items = new SelectItemView[musicos.size()];
+        for (int index = 0; index < musicos.size(); index++) {
+            Musico musico = (Musico) musicos.get(index);
+            items[index] = new SelectItemView(musico.getId().toString(), musico.getNome(), musico);
         }
-        return musicos;
+        return items;
     }
 }
