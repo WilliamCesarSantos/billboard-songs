@@ -14,7 +14,7 @@ public class ArtistaView extends AbstractMenuView {
         super(new MenuItem[]{
                 new MenuItem(1, "Cadastrar"),
                 new MenuItem(2, "Listar"),
-                new MenuItem(3, "Incluir musicos"),
+                new MenuItem(3, "Associar musicos"),
                 new MenuItem(0, "Voltar")
         });
         this.service = service;
@@ -26,7 +26,7 @@ public class ArtistaView extends AbstractMenuView {
         switch (option) {
             case 1 -> new CadatrarArtistaView(this.service, this.musicoService).execute();
             case 2 -> new ListarArtistaView(this.service).execute();
-            case 3 -> new IncluirMusicoAoArtistaView(this.service, this.musicoService).execute();
+            case 3 -> new AssociarMusicoAoArtistaView(this.service, this.musicoService).execute();
             case 0 -> {
                 return;
             }
