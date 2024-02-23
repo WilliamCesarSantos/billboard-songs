@@ -64,6 +64,19 @@ public class ArtistaService {
         }
     }
 
+    public void removerMusico(Long idArtista, Musico musico) throws ServiceException {
+        Artista artista = (Artista) repositorio.buscarPorId(idArtista);
+        Boolean removido = artista.removerMusico(musico);
+        if (!removido) {
+            throw new ModeloInvalidoException("Musico não esta presente para esse artista");
+        }
+        try{
+            repositorio.gravar(artista);
+        }catch(RepositorioException exception){
+            throw new ServiceException(exception.getMessage(), exception);
+        }
+    }
+
     public List listar() {
         return repositorio.listar();
     }

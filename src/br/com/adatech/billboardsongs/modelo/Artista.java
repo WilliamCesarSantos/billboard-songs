@@ -1,7 +1,9 @@
 package br.com.adatech.billboardsongs.modelo;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class Artista {
 
@@ -39,8 +41,21 @@ public class Artista {
         this.musicos.add(musico);
     }
 
-    public void removerMusico(Musico musico) {
-        this.musicos.remove(musico);
+    public Boolean removerMusico(Musico musico) {
+        return this.musicos.remove(musico);
+    }
+
+    public Musico removerMusico(Long idMusico) {
+        Musico musicoRemovido = null;
+        Iterator iterator = musicos.iterator();
+        while(iterator.hasNext()) {
+            Musico musicoDaLista = (Musico) iterator.next();
+            if (Objects.equals(musicoDaLista.getId(), idMusico)) {
+                musicoRemovido = musicoDaLista;
+                iterator.remove();
+            }
+        }
+        return musicoRemovido;
     }
 
     public List getAlbuns() {
